@@ -52,8 +52,8 @@ You will now make this drawing canvas remote-simultanous-editable.
 Now you will improve the drawing experience by making it it draw connected lines instead of disconnected dots. To do this, you will need to draw line segments as you go instead of drawing dots as you go. This also changes the message body you send over to other clients because you will send over the information required to represent a line segment - two points, as opposed to just one point. Also, you will need to remember the last point where the mouse moved, vs where it is now, in order to draw a line between the two points. To do this, you will use a new variable `lastMousePosition` to remember the last x and y mouse positions as reported by the `mousemove` event, it would be an object containing properties `x` and `y` like `{ x: 43, y: 93 }`. You will need to write code to update the value of `lastMousePosition` at the end the event handler of each `mousemove` event occurrence.
 
 1. In the client-side, create a variable called lastMousePosition.
-2. In the mousemove event handler, perform this refactoring step: consolidate the x and y positions you were using to draw the dot into an object, and store it into the variable `mousePosition`.
-3. In the last part of the `mousemove` event handler, save the value of `mousePosition` into lastMousePosition.
+2. In the mousemove event handler, perform this refactoring step: consolidate the x and y positions you were using to draw the dot into an object, and store it into the variable `coordinates`.
+3. In the last part of the `mousemove` event handler, save the value of `coordinates` into lastMousePosition.
 4. For drawing, replace the code for drawing the dot with the code for drawing a line segment starting from the last mouse position to the current position. To prevent an `undefined` error initually, you will only draw if lastMousePosition exists.
 5. Drawing on the canvas now should yield smooth lines. But collaborative drawing is now broken - as it it doesn't yield smooth lines on other connected clients.
 
