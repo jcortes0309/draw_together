@@ -31,7 +31,7 @@ canvas.addEventListener('mousedown', function eventHandler(event) {
 
 Similarly for `mouseup` and `mousemove`. You can get the location of the mouse via `event.clientX` and `event.clientY` where `event` is the first parameter in the event handler function.
 
-You may need to offset the mouse location by the top and left offsets of the canvas position, which can be gotten by `canvas.offsetLeft`, and `canvas.offsetTop`.
+You may need to offset the mouse location by the top and left offsets of the canvas position, which can be found in `canvas.offsetLeft`, and `canvas.offsetTop`.
 
 
 ## Collaborative Drawing
