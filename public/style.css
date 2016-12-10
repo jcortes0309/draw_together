@@ -6,6 +6,10 @@ canvas {
   border: 1px solid black;
 }
 
+.buttons {
+  text-align: center;
+}
+
 .buttons button {
   margin: 10px;
   padding: 10px 15px 10px 15px;
@@ -19,29 +23,34 @@ button:focus {
 #red {
   background-color: red;
   color: white;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
+  width: 80px;
 }
 
 #blue {
   background-color: blue;
   color: white;
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
+  width: 80px;
 }
 
 #green {
   background-color: green;
   color: white;
-  border: 1px solid green;
+  /*border: 1px solid green;*/
+  width: 80px;
 }
 
 #black {
   background-color: black;
   color: white;
   border: 1px solid black;
+  width: 80px;
 }
 
 #default {
   background-color: #663399;
   color: white;
-  border: 1px solid #663399;
+  /*border: 1px solid #663399;*/
+  width: 80px;
 }

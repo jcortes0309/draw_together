@@ -10,9 +10,7 @@ app.use(express.static("public"));
 io.on("connection", function(socket) {
   console.log("Client connected");
   socket.on("draw-together", function(coordinates) {
-    console.log("coordinates info sent by frontend", coordinates);
     socket.broadcast.emit("draw-together", coordinates);
-    console.log("coordinates broadcast ", coordinates);
   });
 
 
