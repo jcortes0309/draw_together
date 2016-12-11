@@ -4,12 +4,13 @@ const canvas = document.getElementById("draw-canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 
+var colorDefault = document.getElementById("default");
 var colorRed = document.getElementById("red");
 var colorBlue = document.getElementById("blue");
 var colorGreen = document.getElementById("green");
 var colorBlack = document.getElementById("black");
-var colorDefault = document.getElementById("default");
 
+var eraser = document.getElementById("eraser");
 var clearPage = document.getElementById("clear-page");
 
 penColor = "#663399";
@@ -22,12 +23,18 @@ var lastMousePosition;
 
 
 function draw(coordinates) {
+  console.log("coordinates inside draw", coordinates);
+  if (coordinates.penColor === "white") {
+    console.log("I am white");
+    ctx.lineWidth = 25;
+  } else {
+    ctx.lineWidth = 10;
+  }
   ctx.strokeStyle = coordinates.penColor;
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
-  ctx.lineWidth = 10;
 
-  console.log("Show me the coordinates", coordinates);
+  // console.log("Show me the coordinates", coordinates);
 
   ctx.beginPath();
   ctx.moveTo(coordinates.lastMousePosition.x, coordinates.lastMousePosition.y);
@@ -37,6 +44,14 @@ function draw(coordinates) {
 
 socket.on("draw-together", function(coordinates) {
   draw(coordinates);
+});
+
+//////////////////////////////
+// Start pen color section //
+/////////////////////////////
+
+colorDefault.addEventListener("click", function(event) {
+  penColor = event.srcElement.value;
 });
 
 colorRed.addEventListener("click", function(event) {
@@ -55,9 +70,13 @@ colorBlack.addEventListener("click", function(event) {
   penColor = event.srcElement.value;
 });
 
-colorDefault.addEventListener("click", function(event) {
+eraser.addEventListener("click", function(event) {
   penColor = event.srcElement.value;
 });
+
+////////////////////////////
+// End pen color section //
+///////////////////////////
 
 canvas.addEventListener("mousedown", function(event) {
   isDrawing = true;

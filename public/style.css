@@ -20,6 +20,13 @@ button:focus {
   outline:0;
 }
 
+#default {
+  background-color: #663399;
+  color: white;
+  /*border: 1px solid #663399;*/
+  width: 80px;
+}
+
 #red {
   background-color: red;
   color: white;
@@ -44,13 +51,17 @@ button:focus {
 #black {
   background-color: black;
   color: white;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   width: 80px;
 }
 
-#default {
-  background-color: #663399;
-  color: white;
-  /*border: 1px solid #663399;*/
+#eraser {
+  background-color: white;
+  color: black;
+  /*border: 1px solid black;*/
   width: 80px;
+}
+
+#clear-page {
+  margin-left: 30px;
 }
