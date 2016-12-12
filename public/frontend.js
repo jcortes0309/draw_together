@@ -1,19 +1,25 @@
 var socket = io();
 
+// initialize on single element with element
+// var elem = document.getElementById('color-input');
+
+// use selector string to initialize on single element
+// more information can be found at http://www.jqueryrain.com/?HXLLAi6v and https://www.npmjs.com/package/huebee
+var hueb = new Huebee("#color-input", {
+  // options
+  setBGColor: true,
+  saturations: 2,
+  customColors: [ '#C25', '#E62', '#EA0', '#19F', '#333' ]
+});
+
 const canvas = document.getElementById("draw-canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 
-var colorDefault = document.getElementById("default");
-var colorRed = document.getElementById("red");
-var colorBlue = document.getElementById("blue");
-var colorGreen = document.getElementById("green");
-var colorBlack = document.getElementById("black");
-
 var eraser = document.getElementById("eraser");
 var clearPage = document.getElementById("clear-page");
 
-penColor = "#663399";
+penColor = "#000";
 // ctx.lineJoin = "round";
 // ctx.lineCap = "round";
 // ctx.lineWidth = 10;
@@ -21,11 +27,11 @@ penColor = "#663399";
 var isDrawing = false;
 var lastMousePosition;
 
+document.getElementById("color-input").innerHTML = penColor;
+document.getElementById("color-input").style.background = penColor;
 
 function draw(coordinates) {
-  console.log("coordinates inside draw", coordinates);
   if (coordinates.penColor === "white") {
-    console.log("I am white");
     ctx.lineWidth = 25;
   } else {
     ctx.lineWidth = 10;
@@ -49,31 +55,14 @@ socket.on("draw-together", function(coordinates) {
 //////////////////////////////
 // Start pen color section //
 /////////////////////////////
-
-colorDefault.addEventListener("click", function(event) {
-  penColor = event.srcElement.value;
-});
-
-colorRed.addEventListener("click", function(event) {
-  penColor = event.srcElement.value;
-});
-
-colorBlue.addEventListener("click", function(event) {
-  penColor = event.srcElement.value;
-});
-
-colorGreen.addEventListener("click", function(event) {
-  penColor = event.srcElement.value;
-});
-
-colorBlack.addEventListener("click", function(event) {
-  penColor = event.srcElement.value;
+// get color from button with id color-input (initialized as hueb)
+penColor = hueb.on("change", function(color) {
+  penColor = color;
 });
 
 eraser.addEventListener("click", function(event) {
   penColor = event.srcElement.value;
 });
-
 ////////////////////////////
 // End pen color section //
 ///////////////////////////
